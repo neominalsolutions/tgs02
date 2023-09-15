@@ -1,0 +1,64 @@
+{{!-- serverside gönderim --}}
+<form method="post" action="/users">
+  <input class="form-control" name="firstname" placeholder="firstname" />
+  <br>
+  <input class="form-control" name="lastname" placeholder="lastname">
+  <br>
+  <input class="btn btn-primary" type="submit" value="Create User" />
+</form>
+
+<hr>
+<br>
+<h1>Json Form</h1>
+{{!-- clientside gönderim --}}
+<form id="frm" method="post" onsubmit="formSubmit(event)">
+  <input id="fs" class="form-control" name="firstname" placeholder="firstname" />
+  <br>
+  <input id="ls" class="form-control" name="lastname" placeholder="lastname">
+  <br>
+  <input class="btn btn-primary" type="submit" value="Create User" />
+</form>
+
+
+{{#contentFor 'scripts'}}
+
+<script>
+
+  // formu bu sefer Jquery üzerinden sayfa post olmadan göndereceğiz.
+
+  function formSubmit(event) {
+
+
+    event.preventDefault(); // formu post etme.
+    //$(this) formInstance
+
+    var data = {};
+    $.each($('#frm').serializeArray(), function () {
+      data[this.name] = this.value;
+    });
+
+    console.log('data', data);
+
+    $.ajax({
+      url: '/users/json',
+      type: 'Post',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      success: function (response) {
+        console.log('response', response);
+      },
+      error: function (err) {
+        console.log('err', err);
+      }
+
+    })
+  }
+
+
+
+
+
+
+</script>
+
+{{/contentFor}}

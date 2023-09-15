@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 // users/info (serverside post)
-router.post('/',userValidation, function (req,res) {
+router.post('/', userValidation, function (req,res) {
 
    const valRes = validationResult(req);
    console.log('valRes', valRes);

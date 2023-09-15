@@ -15,6 +15,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// hbs paketinden default olarak partials ayarlı değil 
+hbs.registerPartials(__dirname + '/views/partials/');
+
 // layout için yaptığımız helper {{{block 'scripts'}}}
 hbs.registerHelper('block', function (name) {
   var blocks  = this._blocks,

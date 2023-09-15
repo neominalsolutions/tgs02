@@ -11,6 +11,11 @@
 </head>
 
 <body>
+
+  {{#if errors}}
+  {{> validationerr errors=errors}}
+  {{/if}}
+
   {{{body}}}
 
   <script src="/javascripts/a.js"></script>
@@ -22,7 +27,7 @@
     integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    {{{block 'scripts'}}}
+  {{{block 'scripts'}}}
 
 </body>
 

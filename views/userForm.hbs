@@ -1,8 +1,11 @@
 {{!-- serverside gönderim --}}
+
+{{!-- {{formData.firstname}} --}}
+
 <form method="post" action="/users">
-  <input class="form-control" name="firstname" placeholder="firstname" />
+  <input class="form-control" name="firstname" placeholder="firstname" value="{{formData.firstname}}" />
   <br>
-  <input class="form-control" name="lastname" placeholder="lastname">
+  <input class="form-control" name="lastname" value="{{formData.lastname}}" placeholder="lastname">
   <br>
   <input class="btn btn-primary" type="submit" value="Create User" />
 </form>

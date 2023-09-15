@@ -1,4 +1,6 @@
 var express = require('express');
+const { body, validationResult } = require('express-validator');
+const userValidation = require('../validations/user.validation');
 var router = express.Router();
 
 /* GET users listing. */
@@ -6,20 +8,21 @@ router.get('/', function(req, res, next) {
   res.render('userForm', {title:'User Form'});
 });
 
-// users/info
-router.post('/', function (req,res) {
+// users/info (serverside post)
+router.post('/',userValidation, function (req,res) {
+
+   const valRes = validationResult(req);
+   console.log('valRes', valRes);
+
+   if(!valRes.isEmpty()){ // validayondan geçilemez ise
+    res.render('userForm', {errors: valRes.errors, formData: req.body })
+   } else {
+    res.render('userForm',{title:'User Form'})
+   }
   
-  console.log('body', req.body);
-
-  // res ile dönüş tipi tanımlamayı unutmuyoruz.
-
-  res.render('userForm',{title:'User Form'})
-
-  // res.end();
-
 });
 
-// /users/json
+// /users/json (clientside post)
 router.post('/json', (req,res) => {
   // json formatında gelen bilgiyi geri döndür.
   console.log('req.body', req.body);

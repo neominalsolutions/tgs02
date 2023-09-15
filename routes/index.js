@@ -1,14 +1,16 @@
 var express = require('express');
+const homeController = require('../controllers/home.controller');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// ara işlem varsa yazım şekli
+// router.get('/', (req,res) => {
+//   // request loglama işlemi
+//   homeController.get(req,res);
 
-router.post('/', function (req,res) {
-  // json veya www.urlformencoded.
-    console.log('req.body', req.body);
-});
+// });
+
+router.get('/', homeController.get);
+
+router.post('/', homeController.post);
 
 module.exports = router;

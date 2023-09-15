@@ -1,0 +1,17 @@
+{{#with model.post}}
+<b>Başlık :</b> {{title}}
+<br>
+<b>İçerik :</b> {{body}}
+<br>
+{{/with}}
+<b>Comments:</b> ({{model.commentCount}})
+<hr>
+{{#with model.post}}
+<ul class="list-group">
+  {{#each comments }}
+  <li class="list-group-item">
+    {{body}} comment by {{name}}
+  </li>
+  {{/each}}
+</ul>
+{{/with}}

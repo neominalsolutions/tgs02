@@ -1,0 +1,19 @@
+{{!-- vm = posts --}}
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Actions</th>
+  </tr>
+  {{#each posts }}
+  <tr>
+    <td>{{title}}</td>
+    <td>{{body}}</td>
+    <td>
+      <a href="/posts/{{id}}"> Makale Detay</a>
+    </td>
+  </tr>
+  {{/each}}
+
+</table>

@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 const userValidation = require('../validations/user.validation');
 var router = express.Router();
 
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('userForm', {title:'User Form'});
